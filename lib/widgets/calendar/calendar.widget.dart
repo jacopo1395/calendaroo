@@ -47,6 +47,8 @@ class _CalendarWidgetState extends State<CalendarWidget>
     if (_calendarController != null) {
       if (newSelectedDay != null
           // && CalendarUtils.removeTime(_calendarController.selectedDay) != CalendarUtils.removeTime(newSelectedDay)
+          // workaround until restore of previous condition
+          && (_calendarController.selectedDay.year != newSelectedDay.year || _calendarController.selectedDay.month != newSelectedDay.month || _calendarController.selectedDay.day != newSelectedDay.day)
           ) {
         setState(() {
           _calendarController.setSelectedDay(newSelectedDay);
